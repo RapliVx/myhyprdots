@@ -67,7 +67,8 @@ while true; do
     esac
 done
 
-bar="${waybar_cava_bar:-▁▂▃▄▅▆▇█}"
+
+bar="${waybar_cava_bar:-  .:~=+*#@}"
 
 # // waybar_cava_stbmode - standby mode for waybar cava - default 0
 # 0: clean - totally hides the module
@@ -116,15 +117,23 @@ config_file="/tmp/bar_cava_config"
 cat >"$config_file" <<EOF
 [general]
 bars = ${bar_width}
-sleep_timer = 1
+sleep_timer = 0
+framerate = 48
+
 [input]
 method = pulse
 source = auto
+
 [output]
 method = raw
 raw_target = /dev/stdout
 data_format = ascii
 ascii_max_range = ${bar_range}
+
+[silence]
+threshold = 0.03
+timeout = 1
 EOF
+
 
 cava -p "$config_file" | sed -u "${dict}"

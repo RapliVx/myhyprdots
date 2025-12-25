@@ -1,5 +1,6 @@
 "custom/cava": {
 	"format": "{}",
+	"font-family": "Cascadia Code Nerd Font",
 	"exec": "waybar_cava.sh",
 	"restart-interval": 1,
 	"hide-empty": true
